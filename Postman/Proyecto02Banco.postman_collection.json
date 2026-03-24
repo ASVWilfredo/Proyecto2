@@ -1,0 +1,19 @@
+{
+  "info": {
+    "_postman_id": "93b09f83-8bf6-4fd2-bedf-1101274be469",
+    "name": "Proyecto02Banco",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53286016",
+    "_collection_link": "https://go.postman.co/collection/53286016-93b09f83-8bf6-4fd2-bedf-1101274be469?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Buscar",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

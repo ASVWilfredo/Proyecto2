@@ -20,7 +20,8 @@ public class Cuenta {
 
     private float saldo;
 
-    public Cuenta(String numCuenta) {
+    public Cuenta(Integer id, String numCuenta) {
+        this.id = id;
         this.numCuenta = numCuenta;
     }
 }

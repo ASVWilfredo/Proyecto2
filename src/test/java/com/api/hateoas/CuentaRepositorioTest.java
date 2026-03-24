@@ -17,10 +17,9 @@ public class CuentaRepositorioTest {
 
     @Autowired
     private CuentaRepositorio cuentaRepositorio;
-
     @Test
     void testAgregarCuenta() {
-        Cuenta cuenta = new Cuenta("1234567");
+        Cuenta cuenta = new Cuenta(123, "1234567");
         Cuenta cuentaGuardada = cuentaRepositorio.save(cuenta);
 
         Assertions.assertThat(cuentaGuardada).isNotNull(); // Comprobar que la cuenta no sea nula
