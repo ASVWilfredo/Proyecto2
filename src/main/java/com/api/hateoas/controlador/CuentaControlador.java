@@ -6,9 +6,7 @@ import com.api.hateoas.servicio.CuentaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +24,37 @@ public class CuentaControlador {
             return ResponseEntity.noContent().build();
         }
         return new ResponseEntity<>(cuentas, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Cuenta> listarCuenta(@PathVariable Integer id) {
+        try {
+            Cuenta cuenta = cuentaServicio.get(id);
+            return new ResponseEntity<>(cuenta, HttpStatus.OK);
+        } catch (Exception exception) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity<Cuenta> guardarCuenta(@RequestBody Cuenta cuenta) {
+        Cuenta cuentaBD = cuentaServicio.save(cuenta);
+        return new ResponseEntity<>(cuenta, HttpStatus.CREATED);
+    }
+
+    @PutMapping
+    public ResponseEntity<Cuenta> editarCuenta(@RequestBody Cuenta cuenta) {
+        Cuenta cuentaBD = cuentaServicio.save(cuenta);
+        return new ResponseEntity<>(cuentaBD, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> eliminarCuenta(@PathVariable Integer id) {
+        try {
+            cuentaServicio.delete(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception exception) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
