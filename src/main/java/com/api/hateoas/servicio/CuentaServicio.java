@@ -1,5 +1,6 @@
 package com.api.hateoas.servicio;
 
+import com.api.hateoas.excepcion.CuentaNoEncontradaExcepcion;
 import com.api.hateoas.modelo.Cuenta;
 import com.api.hateoas.repositorio.CuentaRepositorio;
 import jakarta.transaction.Transactional;
@@ -27,7 +28,10 @@ public class CuentaServicio {
         return cuentaRepositorio.save(cuenta);
     }
 
-    public void delete(Integer id) {
+    public void delete(Integer id) throws CuentaNoEncontradaExcepcion {
+        if(!cuentaRepositorio.existsById(id)) {
+            throw new CuentaNoEncontradaExcepcion("Cuenta no encontrada con el ID : " + id);
+        }
         cuentaRepositorio.deleteById(id);
     }
 

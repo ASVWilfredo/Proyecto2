@@ -78,6 +78,16 @@ public class CuentaControlador {
         return new ResponseEntity<>(cuentaBD, HttpStatus.OK);
     }
 
+    @PatchMapping("/{id}/retiro")
+    public ResponseEntity<Cuenta> retirarDinero(@PathVariable Integer id, @RequestBody Saldo saldo) {
+        Cuenta cuentaBD = cuentaServicio.retirar(saldo.getSaldo(),id);
+        cuentaBD.add(linkTo(methodOn(CuentaControlador.class).listarCuenta(cuentaBD.getId())).withSelfRel());
+        cuentaBD.add(linkTo(methodOn(CuentaControlador.class).depositarDinero(cuentaBD.getId(),null)).withRel("depositos"));
+        cuentaBD.add(linkTo(methodOn(CuentaControlador.class).retirarDinero(cuentaBD.getId(),null)).withRel("retiros"));
+        cuentaBD.add(linkTo(methodOn(CuentaControlador.class).listarCuentas()).withRel(IanaLinkRelations.COLLECTION));
+        return new ResponseEntity<>(cuentaBD, HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> eliminarCuenta(@PathVariable Integer id) {
         try {
