@@ -31,5 +31,15 @@ public class CuentaServicio {
         cuentaRepositorio.deleteById(id);
     }
 
+    public Cuenta depositar(float saldo, Integer id) {
+        cuentaRepositorio.actualizarSaldo(saldo, id);
+        return cuentaRepositorio.findById(id).get();
+    }
+
+    public Cuenta retirar(float saldo, Integer id) {
+        cuentaRepositorio.actualizarSaldo(-saldo, id);
+        return cuentaRepositorio.findById(id).get();
+    }
+
 
 }
