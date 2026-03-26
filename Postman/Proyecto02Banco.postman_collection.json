@@ -33,7 +33,7 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/api/cuentas/1",
+          "raw": "http://localhost:8080/api/cuentas/2",
           "protocol": "http",
           "host": [
             "localhost"
@@ -42,7 +42,7 @@
           "path": [
             "api",
             "cuentas",
-            "1"
+            "2"
           ]
         }
       },
@@ -55,7 +55,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"numCuenta\": \"112131\",\r\n    \"saldo\": 3000\r\n}",
+          "raw": "{\r\n    \"numCuenta\": \"415161\",\r\n    \"saldo\": 5000\r\n}",
           "options": {
             "raw": {
               "language": "json"

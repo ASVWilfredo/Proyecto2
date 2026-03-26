@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CuentaRepositorio extends JpaRepository<Cuenta, Integer> {
-    @Query("UPDATE Cuenta c SET c.saldo=c.saldo + ?1 WHERE c.id=?")
+    /*@Query("UPDATE Cuenta c SET c.saldo=c.saldo + ?1 WHERE c.id=?")
     @Modifying
-    void actualizarSaldo(float saldo, Integer id);
+    void actualizarSaldo(float saldo, Integer id);*/
 }
